@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/horizon_recycler"
+    android:title="水平Recycler"/>
+
+    <item android:id="@+id/fluent_recycler"
+        android:title="瀑布流"/>
+</menu>
