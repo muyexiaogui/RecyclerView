@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -42,7 +43,25 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.fruit_item,parent,false);
-        ViewHolder holder = new ViewHolder(view);
+        final ViewHolder holder = new ViewHolder(view);
+        //Recycler的单条点击事件
+        holder.fruitView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = holder.getAdapterPosition();
+                Fruit fruit = mFruitList.get(position);
+                Toast.makeText(context,"你点击了"+fruit.getName(),Toast.LENGTH_SHORT).show();
+            }
+        });
+        //recycler的控件点击事件
+        holder.fruitImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = holder.getAdapterPosition();
+                Fruit fruit = mFruitList.get(position);
+                Toast.makeText(context,"你点击了"+fruit.getName()+"图片",Toast.LENGTH_SHORT).show();
+            }
+        });
         return holder;
     }
 
@@ -64,9 +83,11 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
 
         ImageView fruitImage;
         TextView fruitName;
+        View fruitView;
 
-        public ViewHolder(View itemView) {
+        private ViewHolder(View itemView) {
             super(itemView);
+            fruitView = itemView;
             fruitImage = (ImageView) itemView.findViewById(R.id.fruit_image);
             fruitName = (TextView) itemView.findViewById(R.id.fruit_name);
         }
