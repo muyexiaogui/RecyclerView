@@ -85,7 +85,7 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
         TextView fruitName;
         View fruitView;
 
-        private ViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             fruitView = itemView;
             fruitImage = (ImageView) itemView.findViewById(R.id.fruit_image);
